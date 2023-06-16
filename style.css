@@ -36,7 +36,7 @@ h1{
     font-family: Tahoma, sans-serif;
     font-size: 38px;    
 
-    background-image: linear-gradient(to right, rgb(255, 255, 255), rgb(48, 0, 180));
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(48, 0, 180));
     background-size: 100% 4px;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -81,7 +81,7 @@ input::placeholder{
     color: white;
     font-family: sans-serif;
     font-size: 22px;
-    background: linear-gradient(to right, rgb(255, 255, 255), rgb(74, 15, 236));
+    background: linear-gradient(to right,  rgb(0, 0, 0), rgb(48, 0, 180));
     transition: 0.2s;
 }
 .button1:hover{
@@ -146,7 +146,7 @@ ul {
     z-index: 9999;
     overflow: hidden;
     margin-bottom:0;
-    background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 255));
+    background: linear-gradient(to right,  rgb(0, 0, 0), rgb(48, 0, 180));
     
   }
   
@@ -184,7 +184,7 @@ ul {
     
     padding: 10px;
     margin: 10px;
-    background: linear-gradient(to right, rgb(255, 255, 255), rgb(74, 15, 236));
+    background: linear-gradient(to right, rgb(0, 0, 0), rgb(48, 0, 180));
   }
   
   .card:hover {

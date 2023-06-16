@@ -16,7 +16,7 @@
         <ul>
         <li class="active"><a  class="a1"  href="index.php">Home</a></li>
         <li style="float: right;" ><a  class="a1" href="login.php">Anmelden</a></li>
-        <!--<li style="float: right;" ><a  class="a1" href="Links/create.php">Registrieren</a></li>-->
+        <!--<li style="float: right;" ><a  class="a1" href="create.php">Registrieren</a></li>-->
         </ul>
     </div>
 
