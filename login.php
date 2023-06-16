@@ -26,3 +26,37 @@
     
 </body>
 </html>
+
+<?php
+// Verbindung zur Datenbank herstellen
+require_once 'config.php';
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Überprüft, ob die Verbindung erfolgreich hergestellt wurde
+if ($conn->connect_error) {
+    die("Verbindung zur Datenbank fehlgeschlagen: " . $conn->connect_error);
+}
+
+// Überprüft, ob das Formular abgeschickt wurde
+if (isset($_POST['submit'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // SQL-Abfrage zum Überprüfen der Anmeldedaten
+    $sql = "SELECT * FROM users WHERE Name = '$username' AND Passwort = '$password'";
+    $result = $conn->query($sql);
+
+    // Überprüft, ob ein Datensatz mit den angegebenen Anmeldedaten gefunden wurde
+    if ($result->num_rows > 0) {
+        // Anmeldung erfolgreich
+        echo "Anmeldung erfolgreich!";
+    } else {
+        // Anmeldung fehlgeschlagen
+        echo "Anmeldung fehlgeschlagen. Bitte überprüfe deine Anmeldedaten.";
+    }
+}
+
+// Verbindung zur Datenbank schliessen
+$conn->close();
+?>
