@@ -21,6 +21,7 @@
             <input type="text" pattern="^[^';-]+$" placeholder="Benutzername" name="username" autocomplete="off">
             <input type="text" pattern="^[^';-]+$" placeholder="Email" name="email" autocomplete="off">
             <input type="password" pattern="^[^';-]{8,}$" placeholder="Passwort" name="password" autocomplete="off">
+            
         </div>
         <button class="button1" name="submit">Erstellen</button>
     </form>
