@@ -2,11 +2,11 @@
 require_once 'config.php';
 require_once 'log.php';
 $log = new Log('log.log');
-
+session_start();
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //Hier brauche ich die Session von der Login Seite um den aktuellen User zu bekommen
-$currentUser = 'simon';
+$currentUser = $_SESSION['username'];
 $recipient = $_POST['recipient'];
 $amount = $_POST['amount'];
 
@@ -46,6 +46,9 @@ if ($amount > 0) {
         // Guthaben des Empfängers aktualisieren
         $sqlUpdateRecipient = "UPDATE users SET Guthaben = '$recipientBalance' WHERE Name = '$recipient'";
         $conn->query($sqlUpdateRecipient);
+        if($currentUser == 'admin'){
+            header("Location: admin.php");
+        }else
         header("Location: user.php");
         echo "Geld erfolgreich überwiesen!";
         exit();

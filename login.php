@@ -38,6 +38,15 @@ class DataAccess
     }
 }
 
+//Sesion starten
+session_start();
+
+// Überprüfen, ob der Benutzer bereits angemeldet ist
+if (isset($_SESSION['username'])) {
+    header('Location: user.php');
+    exit();
+}
+
 // Überprüfen, ob das Formular abgeschickt wurde
 if (isset($_POST['submit'])) {
     $username = cleanInput($_POST['username']);
@@ -54,7 +63,10 @@ if (isset($_POST['submit'])) {
         // Überprüfen, ob ein Datensatz mit den angegebenen Anmeldedaten gefunden wurde
         if ($userData) {
             // Anmeldung erfolgreich
+            $_SESSION['username'] = $username;
             $log->write('[INFO] - ' . $username . ' hat sich erfolgreich angemeldet!');
+            header('Location: user.php');
+            exit();
         } else {
             // Anmeldung fehlgeschlagen
             $loginFailed = true;

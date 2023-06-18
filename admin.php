@@ -3,12 +3,29 @@ require_once 'config.php';
 
 // Guthaben des aktuellen Benutzers aus der Datenbank abrufen
 
+session_start();
+$session_timeout = 10; // Session wird nach 10 Sek geschlossen
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //Hier brauche ich die Session von der Login Seite um den aktuellen User zu bekommen
-$currentUser = 'admin';
+$currentUser = $_SESSION['username'];
 $sql = "SELECT Guthaben FROM users WHERE Name = '$currentUser'";
 $result = $conn->query($sql);
 $balance = 0;
+
+// Überprüfen, ob der Benutzer angemeldet ist
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit();
+}
+if (!isset($_SESSION['last_visit'])) {
+    $_SESSION['last_visit'] = time();
+  }
+  if((time() - $_SESSION['last_visit']) > $session_timeout) {
+    session_unset();
+    session_destroy();
+    header('Location: login.php');
+  }
+  $_SESSION['last_visit'] = time();
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
