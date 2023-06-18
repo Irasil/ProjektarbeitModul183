@@ -65,7 +65,9 @@ if (isset($_POST['submit'])) {
 
         // Benutzerdaten abrufen
         $userData = $dataAccess->getUserByUsernameAndPassword($username, $password);
+        if(isset($userData['Rolle'])){
         $userRoll = $userData['Rolle'];
+        }
 
         // Überprüfen, ob ein Datensatz mit den angegebenen Anmeldedaten gefunden wurde
         if ($userData) {
