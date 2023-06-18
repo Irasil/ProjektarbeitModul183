@@ -42,10 +42,16 @@ class DataAccess
 session_start();
 
 // Überprüfen, ob der Benutzer bereits angemeldet ist
-if (isset($_SESSION['username'])) {
-    header('Location: user.php');
-    exit();
+if (isset($_SESSION['rolle'])) {
+    if ($_SESSION['rolle'] == 'administrator') {
+        header('Location: admin.php');
+        exit();
+    } else {
+        header('Location: user.php');
+        exit();
+    }
 }
+
 
 // Überprüfen, ob das Formular abgeschickt wurde
 if (isset($_POST['submit'])) {
