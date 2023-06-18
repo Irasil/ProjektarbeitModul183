@@ -58,3 +58,19 @@
 2023-06-18 0:13:33 - [INFO] - Sender: simon, Empfänger: admin, Betrag: 1
 2023-06-18 0:15:15 - [INFO] - Sender: simon, Empfänger: david, Betrag: 1
 2023-06-18 0:15:34 - [INFO] - Sender: simon, Empfänger: admin, Betrag: 1
+2023-06-18 14:45:45 - [CREATED] - BenutzerHalloerfolgreich erstellt.
+2023-06-18 15:12:46 - [ERROR] - Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte
+2023-06-18 15:13:52 - [ERROR] - Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte
+2023-06-18 15:14:50 - [ERROR] - Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte
+2023-06-18 15:15:06 - [WARNING] - Login als Simon fehlgeschlagen!
+2023-06-18 15:22:49 - [WARNING] - Login als Simon fehlgeschlagen!
+2023-06-18 15:22:50 - [WARNING] - Login als Simon fehlgeschlagen!
+2023-06-18 15:22:51 - [WARNING] - Login als Simon fehlgeschlagen!
+2023-06-18 15:22:53 - [WARNING] - Login als Simon fehlgeschlagen!
+2023-06-18 15:22:54 - [WARNING] - Login als Simon fehlgeschlagen!
+2023-06-18 15:22:59 - [WARNING] - Login als Simon fehlgeschlagen!
+2023-06-18 15:23:43 - [INFO] - simon hat sich erfolgreich angemeldet!
+2023-06-18 15:23:52 - [WARNING] - Login als Simon fehlgeschlagen!
+2023-06-18 15:26:19 - [WARNING] - Login als Simon fehlgeschlagen!
+2023-06-18 15:26:30 - [WARNING] - Login als Simon2 fehlgeschlagen!
+2023-06-18 15:29:15 - [FATAL] - Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte

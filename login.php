@@ -1,32 +1,3 @@
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-</head>
-<body>
-
-<div >
-    <ul>
-    <li><a  class="a1"  href="index.php">Home</a></li>
-    </ul>
-</div>
-
-    <form class="form1" id="login_form" action="login.php" method="post">
-        <h1>Login</h1>
-        <div class="inputs_container">
-            <input type="text" pattern="^[^';-]{3,}$" placeholder="Benutzername" name="username" autocomplete="off">
-            <input type="password" pattern="^[^';-]{8,}$" placeholder="Passwort" name="password" autocomplete="off">
-        </div>
-        <button class="button1" name="submit">Login</button>
-    </form>
-    
-</body>
-</html>
-
 <?php
 // Verbindung zur Datenbank herstellen
 $config = require_once 'config.php';
@@ -83,11 +54,10 @@ if (isset($_POST['submit'])) {
         // Überprüfen, ob ein Datensatz mit den angegebenen Anmeldedaten gefunden wurde
         if ($userData) {
             // Anmeldung erfolgreich
-            echo "Anmeldung erfolgreich!";
             $log->write('[INFO] - ' . $username . ' hat sich erfolgreich angemeldet!');
         } else {
             // Anmeldung fehlgeschlagen
-            echo "Anmeldung fehlgeschlagen. Bitte überprüfe deine Anmeldedaten.";
+            $loginFailed = true;
             $log->write('[WARNING] - Login als ' . $username . ' fehlgeschlagen!');
         }
 
@@ -128,3 +98,32 @@ function validatePassword($password)
 }
 ?>
 
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+</head>
+<body>
+    <div >
+        <ul>
+            <li><a  class="a1"  href="index.php">Home</a></li>
+        </ul>
+    </div>
+
+    <form class="form1" id="login_form" action="login.php" method="post">
+        <h1>Login</h1>
+        <div class="inputs_container">
+            <?php if (isset($loginFailed) && $loginFailed): ?>
+                <p class="error">Anmeldung fehlgeschlagen. Bitte überprüfe deine Anmeldedaten.</p>
+            <?php endif; ?>
+            <input type="text" pattern="[a-zA-Z0-9äüöéèàêç]{3,}" placeholder="Benutzername" name="username" autocomplete="off">
+            <input type="password" pattern="[a-zA-Z0-9äüöéèàêç]{3,}" placeholder="Passwort" name="password" autocomplete="off">
+        </div>
+        <button class="button1" name="submit">Login</button>
+    </form>
+</body>
+</html>

@@ -29,13 +29,12 @@ if ($resultUsers->num_rows > 0) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Guthaben anzeigen</title>
+    <title>Ihr Guthaben</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Erstellen</title>
-    <link rel="stylesheet" href="../style.css">
-    <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">   
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">   
 </head>
 
 </head>

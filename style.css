@@ -31,6 +31,15 @@ body{
     align-items: center;
 }
 
+p{
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 h1{
     color: white;
     font-family: Tahoma, sans-serif;
@@ -113,6 +122,26 @@ input::placeholder{
 .button2:focus{
     outline: none;
     width: 200px;
+}
+
+.button3{
+    height: 54px;
+    width: 140px;
+    border-radius: 1000px;
+    border: none;
+    color: white;
+    margin-bottom: 50px;
+    font-family: sans-serif;
+    font-size: 18px;
+    background: linear-gradient(to right,  rgb(0, 0, 0), rgb(48, 0, 180));
+    transition: 0.2s;
+}
+.button3:hover{
+    width: 180px;
+}
+.button3:focus{
+    outline: none;
+    width: 180px;
 }
 
 @media(max-width: 650px){
