@@ -59,14 +59,21 @@ if (isset($_POST['submit'])) {
 
         // Benutzerdaten abrufen
         $userData = $dataAccess->getUserByUsernameAndPassword($username, $password);
+        $userRoll = $userData['Rolle'];
 
         // Überprüfen, ob ein Datensatz mit den angegebenen Anmeldedaten gefunden wurde
         if ($userData) {
             // Anmeldung erfolgreich
             $_SESSION['username'] = $username;
+            $_SESSION['rolle'] = $userRoll;
             $log->write('[INFO] - ' . $username . ' hat sich erfolgreich angemeldet!');
-            header('Location: user.php');
-            exit();
+            if ($_SESSION['rolle'] == 'administrator') {
+                header('Location: admin.php');
+                exit();
+            } else {
+                header('Location: user.php');
+                exit();
+            }
         } else {
             // Anmeldung fehlgeschlagen
             $loginFailed = true;
@@ -76,7 +83,7 @@ if (isset($_POST['submit'])) {
         // Datenbankverbindung schließen
         $dataAccess->closeConnection();
     } else {
-        echo "Ungültige Benutzereingaben.";
+        $log->write('[WARNING] - Login als ' . $username . ' fehlgeschlagen!');
     }
 }
 
@@ -133,7 +140,7 @@ function validatePassword($password)
                 <p class="error">Anmeldung fehlgeschlagen. Bitte überprüfe deine Anmeldedaten.</p>
             <?php endif; ?>
             <input type="text" pattern="[a-zA-Z0-9äüöéèàêç]{3,}" placeholder="Benutzername" name="username" autocomplete="off">
-            <input type="password" pattern="[a-zA-Z0-9äüöéèàêç]{3,}" placeholder="Passwort" name="password" autocomplete="off">
+            <input type="password" pattern="[a-zA-Z0-9äüöéèàêç]{8,}" placeholder="Passwort" name="password" autocomplete="off">
         </div>
         <button class="button1" name="submit">Login</button>
     </form>

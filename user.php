@@ -5,10 +5,6 @@ require_once 'config.php';
 
 session_start();
 $session_timeout = 10; // Session wird nach 10 Sek geschlossen
-
-
-
-
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //Hier brauche ich die Session von der Login Seite um den aktuellen User zu bekommen
 $currentUser = $_SESSION['username'];
