@@ -61,6 +61,7 @@ if ($resultUsers->num_rows > 0) {
 <div >
     <ul>
     <li><a  class="a1"  href="index.php">Home</a></li>
+    <li style="float: right;"><a class="a1" href="logout.php">Abmelden</a></li>
     </ul>
 
 

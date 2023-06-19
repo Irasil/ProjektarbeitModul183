@@ -12,14 +12,20 @@
 </head>
 <body>
 
-<div >
-        <ul>
-        <li class="active"><a  class="a1"  href="index.php">Home</a></li>
-        <li style="float: right;" ><a  class="a1" href="login.php">Anmelden</a></li>
-        </ul>
+
+<div>
+    <ul>
+        <li class="active"><a class="a1" href="index.php">Home</a></li>
+        <?php session_start(); if(!$_SESSION): ?>
+            <li style="float: right;"><a class="a1" href="login.php">Anmelden</a></li>
+            
+        <?php else: ?>
+            <li style="float: right;"><a class="a1" href="logout.php">Abmelden</a></li>
+        <?php endif; ?>
+    </ul>
 </div>
 
- <h1>Wilkommen bei Aarau Coin</h1>
-    
+<h1>Willkommen bei Aarau Coin</h1>
+
 </body>
 </html>
