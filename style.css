@@ -93,10 +93,6 @@ h2{
     border-bottom: 1px solid #ddd;
 }
 
-.table1 th {
-
-}
-
 .form2 {
     display: flex;
     align-items: center;
@@ -169,6 +165,11 @@ input::placeholder{
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;;
+}
+
+.button2:hover{
+    background: rgb(44, 9, 139);
+    width: 120px;
 }
 
 
