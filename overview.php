@@ -8,36 +8,40 @@ if (isset($_POST['submit'])) {
     // Benutzername und Guthaben aus den Formulardaten abrufen
     $username = $_POST['name'];
     $amount = $_POST['balance'];
+    
     // Überprüfen, ob alle Felder ausgefüllt sind
     if (!empty($username) && !empty($amount)) {
         // SQL-Befehl zum Aktualisieren des Guthabens in der Datenbank
         $sqlUpdateBalance = "UPDATE users SET Guthaben = ? WHERE Name = ?";
-        $stmtUpdateBalance = $conn->prepare($sqlUpdateBalance);
-        $stmtUpdateBalance->bind_param("ds", $amount, $username);
-
-        // Datenbankabfrage ausführen
-        if ($stmtUpdateBalance->execute()) {
-            echo "Guthaben erfolgreich aktualisiert.";
+        
+        // Vorbereiten der SQL-Abfrage
+        $stmt = $conn->prepare($sqlUpdateBalance);
+        
+        // Parameter binden
+        $stmt->bind_param("is", $amount, $username);
+        
+        // Abfrage ausführen
+        if ($stmt->execute()) {
             $log->write("[UPDATED] - Guthaben von Benutzer " . $username .  " erfolgreich aktualisiert.");
-            header("Location: admin.php");
+            header("Location: overview.php");
             exit;
         } else {
-            echo "Fehler beim Aktualisieren des Guthabens: " . $stmtUpdateBalance->error;
-            $log->write("[ERROR] - Fehler beim Aktualisieren des Guthabens: " . $stmtUpdateBalance->error);
+            $log->write("[ERROR] - Fehler beim Aktualisieren des Guthabens: " . $stmt->error);
         }
+        
+        // Statement schließen
+        $stmt->close();
     } else {
         echo "Bitte füllen Sie alle Felder aus.";
     }
 }
+
 // Verbindung zur Datenbank schließen
 
 
 session_start();
 $session_timeout = 1000000; // Session wird nach 10 Sek geschlossen
 $currentUser = $_SESSION['username'];
-$sql = "SELECT Guthaben FROM users WHERE Name = '$currentUser'";
-$result = $conn->query($sql);
-$balance = 0;
 
 // Überprüfen, ob der Benutzer angemeldet ist
 if (!isset($_SESSION['username'])) {
@@ -54,10 +58,6 @@ if (!isset($_SESSION['last_visit'])) {
   }
   $_SESSION['last_visit'] = time();
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $balance = $row["Guthaben"];
-}
 
 // Namen aller Benutzer aus der Datenbank abrufen
 $sqlUsers = "SELECT * FROM users WHERE Name != '$currentUser'";
@@ -105,6 +105,7 @@ $conn->close();
     </ul>
 </div>
 <div >
+
 <table class="table1">
         <thead>
             <tr>
@@ -126,9 +127,9 @@ $conn->close();
                     </td>
                     <td><?php echo $user['Guthaben']; ?></td>
                     <td>    
-                            <input type="hidden" name="name" value="<?php echo $user['Name']; ?>">
-                            <input type="number" name="balance">
-                            <button class="button2" type="submit">Speichern</button>
+                            <input type="hidden" name="name" id="name" value="<?php echo $user['Name']; ?>">
+                            <input type="number" name="balance" id="balance" value="">
+                            <button class="button2" name="submit" type="submit">Speichern</button>
                         </form>
                     </td>
                 </tr>
