@@ -31,8 +31,6 @@ if (isset($_POST['submit'])) {
         
         // Statement schließen
         $stmt->close();
-    } else {
-        echo "Bitte füllen Sie alle Felder aus.";
     }
 }
 
@@ -113,25 +111,26 @@ $conn->close();
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($users as $user): ?>
-                <tr>
-                    <td><?php echo $user['Name']; ?></td>
-                    <td>
-                        <form class="form2" action="overview.php" method="POST">
-                            <input type="hidden" name="user_id" value="<?php echo $user['Name']; ?>">
-                           
-                        
-                    </td>
-                    <td><?php echo $user['Guthaben']; ?></td>
-                    <td>    
-                            <input type="hidden" name="name" id="name" value="<?php echo $user['Name']; ?>">
-                            <input type="number" name="balance" id="balance" value="">
-                            <button class="button2" name="submit" type="submit">Speichern</button>
-                        </form>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
+                <?php foreach ($users as $user): ?>
+                    <tr>
+                        <td><?php echo $user['Name']; ?></td>
+                        <td>
+                            <form class="form2" action="overview.php" method="POST">
+                                <input type="hidden" name="user_id" value="<?php echo $user['Name']; ?>">
+                        </td>
+                        <td><?php echo $user['Guthaben']; ?></td>
+                        <td>    
+                                <input type="hidden" name="name" id="name" value="<?php echo $user['Name']; ?>">
+                                <input type="number" name="balance" id="balance" value="" min="0">
+                                <button class="button2" name="submit" type="submit">Speichern</button>
+                            </form>
+                            <?php if (isset($_POST['submit']) && empty($_POST['balance']) && $_POST['name'] === $user['Name']): ?>
+                                <p class="error" >Bitte füllen Sie das Feld aus.</p>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
     </table>
      </div >
 </body>

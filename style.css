@@ -93,8 +93,11 @@ h2{
     border-bottom: 1px solid #ddd;
 }
 
-.table1 th {
-
+.error
+{
+    color: red;
+    text-align: left;
+    padding-left: 12%;
 }
 
 .form2 {
