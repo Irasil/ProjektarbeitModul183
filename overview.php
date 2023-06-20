@@ -36,9 +36,6 @@ if (isset($_POST['submit'])) {
     }
 }
 
-// Verbindung zur Datenbank schließen
-
-
 session_start();
 $session_timeout = 1000000; // Session wird nach 10 Sek geschlossen
 $currentUser = $_SESSION['username'];
