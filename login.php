@@ -38,7 +38,7 @@ class DataAccess
     }
 }
 
-//Sesion starten
+// Sitzung starten
 session_start();
 
 // Überprüfen, ob der Benutzer bereits angemeldet ist
@@ -52,46 +52,52 @@ if (isset($_SESSION['rolle'])) {
     }
 }
 
-
 // Überprüfen, ob das Formular abgeschickt wurde
 if (isset($_POST['submit'])) {
-    $username = cleanInput($_POST['username']);
-    $password = cleanInput($_POST['password']);
+    // Überprüfen des CSRF-Tokens
+    if (isset($_POST['csrf_token']) && $_POST['csrf_token'] === $_SESSION['csrf_token']) {
+        $username = cleanInput($_POST['username']);
+        $password = cleanInput($_POST['password']);
 
-    // Validierung der Benutzereingaben
-    if (validateUsername($username) && validatePassword($password)) {
-        // Datenbankzugriffsschicht initialisieren
-        $dataAccess = new DataAccess($config);
+        // Validierung der Benutzereingaben
+        if (validateUsername($username) && validatePassword($password)) {
+            // Datenbankzugriffsschicht initialisieren
+            $dataAccess = new DataAccess($config);
 
-        // Benutzerdaten abrufen
-        $userData = $dataAccess->getUserByUsernameAndPassword($username, $password);
-        if(isset($userData['Rolle'])){
-        $userRoll = $userData['Rolle'];
-        }
-
-        // Überprüfen, ob ein Datensatz mit den angegebenen Anmeldedaten gefunden wurde
-        if ($userData) {
-            // Anmeldung erfolgreich
-            $_SESSION['username'] = $username;
-            $_SESSION['rolle'] = $userRoll;
-            $log->write('[INFO] - ' . $username . ' hat sich erfolgreich angemeldet!');
-            if ($_SESSION['rolle'] == 'administrator') {
-                header('Location: admin.php');
-                exit();
-            } else {
-                header('Location: user.php');
-                exit();
+            // Benutzerdaten abrufen
+            $userData = $dataAccess->getUserByUsernameAndPassword($username, $password);
+            if (isset($userData['Rolle'])) {
+                $userRoll = $userData['Rolle'];
             }
+
+            // Überprüfen, ob ein Datensatz mit den angegebenen Anmeldedaten gefunden wurde
+            if ($userData) {
+                // Anmeldung erfolgreich
+                $_SESSION['username'] = $username;
+                $_SESSION['rolle'] = $userRoll;
+                $log->write('[INFO] - ' . $username . ' hat sich erfolgreich angemeldet!');
+                if ($_SESSION['rolle'] == 'administrator') {
+                    header('Location: admin.php');
+                    exit();
+                } else {
+                    header('Location: user.php');
+                    exit();
+                }
+            } else {
+                // Anmeldung fehlgeschlagen
+                $loginFailed = true;
+                $log->write('[WARNING] - Login als ' . $username . ' fehlgeschlagen!');
+            }
+
+            // Datenbankverbindung schließen
+            $dataAccess->closeConnection();
         } else {
-            // Anmeldung fehlgeschlagen
-            $loginFailed = true;
             $log->write('[WARNING] - Login als ' . $username . ' fehlgeschlagen!');
         }
-
-        // Datenbankverbindung schließen
-        $dataAccess->closeConnection();
     } else {
-        $log->write('[WARNING] - Login als ' . $username . ' fehlgeschlagen!');
+        // CSRF-Tokens stimmen nicht überein
+        $log->write('[WARNING] - CSRF-Tokens stimmen nicht überein!');
+        exit('CSRF-Tokens stimmen nicht überein!');
     }
 }
 
@@ -123,6 +129,11 @@ function validatePassword($password)
         return false;
     }
 }
+
+// Generiere CSRF-Token und speichere es in der Sitzung
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
 ?>
 
 <html lang="de">
@@ -149,6 +160,9 @@ function validatePassword($password)
             <?php endif; ?>
             <input type="text" pattern="[a-zA-Z0-9äüöéèàêç]{3,}" placeholder="Benutzername" name="username" autocomplete="off">
             <input type="password" pattern="[a-zA-Z0-9äüöéèàêç]{8,}" placeholder="Passwort" name="password" autocomplete="off">
+
+            <!-- CSRF-Token-Feld -->
+            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
         </div>
         <button class="button1" name="submit">Login</button>
     </form>
