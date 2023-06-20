@@ -36,8 +36,8 @@ function showLogoutConfirmation() {
         <div class="inputs_container">
             <h2>Möchten Sie angemeldet bleiben?</h2>
             <div class="buttons">
-                <button id="btn-yes" class="btn-yes">Ja</button>
-                <button id="btn-no" class="btn-no">Nein</button>
+                <button id="btn-yes" class="button2">Ja</button>
+                <button id="btn-no" class="button2">Nein</button>
             </div>
         </div>
     `;
