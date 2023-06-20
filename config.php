@@ -26,6 +26,4 @@ try {
     header("Location: ups.php");
     exit;
 }
-
 return $connectionData;
-?>

@@ -2,10 +2,11 @@
 require_once 'config.php';
 require_once 'log.php';
 $log = new Log('log.log');
-session_start();
+//require_once  'absoluttimeout.php';
 
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//Hier brauche ich die Session von der Login Seite um den aktuellen User zu bekommen
+// Überprüfen, ob das Formular abgeschickt wurde
+if(isset($_SESSION['username'])){
+
 $currentUser = $_SESSION['username'];
 $recipient = $_POST['recipient'];
 $amount = $_POST['amount'];
@@ -60,4 +61,6 @@ if ($amount > 0) {
 } else {
     echo "Ungültiger Betrag für die Überweisung!";
 }
-?>
+}else{
+    header("Location: login.php");
+}
