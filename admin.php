@@ -68,6 +68,7 @@ if ($resultUsers->num_rows > 0) {
     <div class="inputs_container">
     
     <form class="form1" action="senden.php" id="login_form" method="POST">
+    <h1>Hallo: <?php echo $currentUser; ?></h1>
     <h1>Ihr Guthaben: <?php echo $balance; ?></h1>
     <br><br>
     <h2>Geld senden:</h2>

@@ -12,15 +12,24 @@
 </head>
 <body>
 
-
 <div>
-    <ul>
+<ul>
         <li class="active"><a class="a1" href="index.php">Home</a></li>
         <?php session_start(); if(!$_SESSION): ?>
             <li style="float: right;"><a class="a1" href="login.php">Anmelden</a></li>
             
-        <?php else: ?>
-            <li style="float: right;"><a class="a1" href="logout.php">Abmelden</a></li>
+            <?php else: ?>
+                <li style="float: right;"><a class="a1" href="logout.php">Abmelden</a></li>
+            <?php
+            if (isset($_SESSION['rolle'])) {
+                if ($_SESSION['rolle'] == 'administrator') {
+                    echo '<li style="float: right;"><a class="a1" href="admin.php">Meine Coins</a></li>';
+                } else {
+                    echo '<li style="float: right;"><a class="a1" href="user.php">Meine Coins</a></li>';
+                }
+            }
+            ?>
+           
         <?php endif; ?>
     </ul>
 </div>
