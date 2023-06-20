@@ -80,14 +80,8 @@ if ($resultUsers->num_rows > 0) {
                 <option value="<?php echo $user; ?>"><?php echo $user; ?></option>
             <?php endforeach; ?>
         </select>
-
-        <br><br>
-
         <label for="amount">Betrag:</label>
         <input type="number" name="amount" id="amount" placeholder="0" step="1" min="0" pattern="[0-9]+" required>
-
-        <br><br>
-
         <input type="submit" value="Senden">
     </div>
     </div>
