@@ -1,0 +1,313 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    background: radial-gradient(#33383f, rgb(42, 47, 53));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    padding-top:100px;
+}
+.form1{
+    height: 575px;
+    width: 500px;
+    padding: 40px;
+    border-radius: 8px;
+    background-color: #222831;
+    box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.404);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.form2{
+    background-color: #222831;
+    box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.404);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+p{
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+label{
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h1{
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-size: 38px;    
+
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(48, 0, 180));
+    background-size: 100% 4px;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    line-height: 60px;
+    margin-top: 10%;;
+}
+
+h2{
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-size: 25px;   
+}
+
+
+.table1 {
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-size: 25px; 
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table1 th, .table1 td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.error
+{
+    color: red;
+    text-align: left;
+    padding-left: 12%;
+}
+
+.form2 {
+    display: flex;
+    align-items: center;
+}
+
+.button1 {
+    margin-left: 10px;
+}
+
+.inputs_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+
+input{
+    height: 64px;
+    width: 240px;
+    margin: 15px;
+    padding: 0px 25px;
+    border-radius: 10px;
+    border: none;
+    background-color: #373e49;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.212);
+    color: white;
+    font-size: 20px;
+    transition: 0.2s;
+}
+input:hover{
+    background-color: #47505f;
+}
+input:focus{
+    background-color: #47505f;
+    outline: none;
+    width: 265px;
+}
+input::placeholder{
+    color: rgb(159, 161, 190);
+}
+.button1{
+    height: 64px;
+    width: 140px;
+    border-radius: 1000px;
+    border: none;
+    color: white;
+    font-family: sans-serif;
+    font-size: 22px;
+    background: linear-gradient(to right,  rgb(0, 0, 0), rgb(48, 0, 180));
+    transition: 0.2s;
+}
+.button1:hover{
+    width: 200px;
+}
+.button1:focus{
+    outline: none;
+    width: 200px;
+}
+
+.button2{
+    height: 30px;
+    width: 100px;
+    border-radius: 800px;
+    border: none;
+    color: white;
+    font-family: sans-serif;
+    font-size: 16px;
+    background: rgb(74, 15, 236);
+    transition: 0.2s;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;;
+}
+
+.button2:hover{
+    background: rgb(44, 9, 139);
+    width: 120px;
+}
+
+
+.button3{
+    height: 54px;
+    width: 140px;
+    border-radius: 1000px;
+    border: none;
+    color: white;
+    margin-bottom: 50px;
+    font-family: sans-serif;
+    font-size: 18px;
+    background: linear-gradient(to right,  rgb(0, 0, 0), rgb(48, 0, 180));
+    transition: 0.2s;
+}
+.button3:hover{
+    width: 180px;
+}
+.button3:focus{
+    outline: none;
+    width: 180px;
+}
+
+@media(max-width: 650px){
+    form1{
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+    }
+    .inputs_container{
+        margin: 80px;
+    }
+    h1{
+        font-size: 32px;
+    }
+}
+
+
+/*-----------------------------------------------------------------*/
+/* Navbar*/
+
+/* NavBar*/
+/* -------------------------------------------------------*/
+
+ul {
+    list-style-type: none;
+    position: fixed;
+    left:0;
+    top:0;
+    width: 100%;    
+    margin-top: 0;
+    padding: 0;
+    z-index: 9999;
+    overflow: hidden;
+    margin-bottom:0;
+    background: linear-gradient(to right,  rgb(0, 0, 0), rgb(48, 0, 180));
+    
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li .a1 {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: larger;
+    
+  }
+
+  
+  li .a1:hover {
+    background-color: #ddd;
+    color: rgb(0, 0, 0);
+  }
+  
+  .active
+  {
+    background-color: rgb(0, 0, 0);
+    color: #ddd;
+  }
+
+  /* Shoping CARDS*/
+
+ body .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;  
+    
+    padding: 10px;
+    margin: 10px;
+    background: linear-gradient(to right, rgb(0, 0, 0), rgb(48, 0, 180));
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .container {
+    padding: 12px 16px 20px;
+   text-align: center;
+    
+  }
+  form {
+    float: right;
+    width:33%;
+}
+
+.input2{
+    height: 30px;
+    width: 100px;
+    margin: 15px;
+    padding: 0px 25px;
+    border-radius: 10px;
+    border: none;
+    background-color: #373e49;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.212);
+    color: white;
+    font-size: 12px;
+    transition: 0.2s;
+}
+.input2:hover{
+    background-color: #47505f;
+}
+.input2:focus{
+    background-color: #47505f;
+    outline: none;
+    width: 100px;
+}
+.input2::placeholder{
+    color: rgb(159, 161, 190);
+}
