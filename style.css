@@ -31,7 +31,25 @@ body{
     align-items: center;
 }
 
+.form2{
+    background-color: #222831;
+    box-shadow: 4px 4px 1px rgba(0, 0, 0, 0.404);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
 p{
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+label{
     color: white;
     font-family: Tahoma, sans-serif;
     font-size: 16px;
@@ -52,6 +70,42 @@ h1{
     line-height: 60px;
     margin-top: 10%;;
 }
+
+h2{
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-size: 25px;   
+}
+
+
+.table1 {
+    color: white;
+    font-family: Tahoma, sans-serif;
+    font-size: 25px; 
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table1 th, .table1 td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.table1 th {
+
+}
+
+.form2 {
+    display: flex;
+    align-items: center;
+}
+
+.button1 {
+    margin-left: 10px;
+}
+
 .inputs_container{
     display: flex;
     flex-direction: column;
@@ -116,13 +170,7 @@ input::placeholder{
     margin-top: 10px;
     margin-bottom: 10px;;
 }
-.button2:hover{
-    width: 200px;
-}
-.button2:focus{
-    outline: none;
-    width: 200px;
-}
+
 
 .button3{
     height: 54px;
