@@ -4,7 +4,7 @@ require_once 'config.php';
 // Guthaben des aktuellen Benutzers aus der Datenbank abrufen
 
 session_start();
-$session_timeout = 10; // Session wird nach 10 Sek geschlossen
+$session_timeout = 1000000; // Session wird nach 10 Sek geschlossen
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //Hier brauche ich die Session von der Login Seite um den aktuellen User zu bekommen
 $currentUser = $_SESSION['username'];
@@ -41,6 +41,7 @@ if ($resultUsers->num_rows > 0) {
         $users[] = $rowUsers["Name"];
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +62,7 @@ if ($resultUsers->num_rows > 0) {
     <li><a  class="a1"  href="index.php">Home</a></li>
     <li style="float: right;" ><a  class="a1" href="create.php">Benutzer erstellen</a></li>
     <li style="float: right;"><a class="a1" href="logout.php">Abmelden</a></li>
+    <li style="float: right;"><a class="a1" href="overview.php">Coins Managen</a></li>
     </ul>
 
 
@@ -79,9 +81,6 @@ if ($resultUsers->num_rows > 0) {
                 <option value="<?php echo $user; ?>"><?php echo $user; ?></option>
             <?php endforeach; ?>
         </select>
-
-        <br><br>
-
         <label for="amount">Betrag:</label>
         <input type="number" name="amount" id="amount" placeholder="0" step="1" min="0" pattern="[0-9]+" required>
 
