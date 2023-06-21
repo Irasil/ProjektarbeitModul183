@@ -47,20 +47,32 @@ if ($amount > 0) {
         // Guthaben des Empfängers aktualisieren
         $sqlUpdateRecipient = "UPDATE users SET Guthaben = '$recipientBalance' WHERE Name = '$recipient'";
         $conn->query($sqlUpdateRecipient);
-        if($currentUser == 'admin'){
-            header("Location: admin.php");
-        }else
-        header("Location: user.php");
-        echo "Geld erfolgreich überwiesen!";
-        exit();
+        if ($_SESSION['rolle'] == 'administrator') {
+            $redirectLocation = "admin.php?success=true";
+        } else {
+            $redirectLocation = "user.php?success=true";
+        }
 
         
     } else {
-        echo "Nicht genügend Guthaben für die Überweisung!";
+        $errorMessage = "Nicht genügend Guthaben für die Überweisung!";
     }
 } else {
-    echo "Ungültiger Betrag für die Überweisung!";
+    $errorMessage = "Ungültiger Betrag für die Überweisung!";
 }
 }else{
     header("Location: login.php");
 }
+
+if ($_SESSION['rolle'] == 'administrator') {
+    $page = "admin";
+} else {
+    $page = "user";
+}
+
+if (isset($redirectLocation)) {
+    header("Location: $redirectLocation?success=true");
+    exit();
+} elseif (isset($errorMessage)) {
+    header("Location: $page.php?message=" . urlencode($errorMessage));
+    exit();}

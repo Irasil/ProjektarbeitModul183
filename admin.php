@@ -2,6 +2,12 @@
 require_once 'config.php';
 require_once 'absoluttimeout.php';
 
+/*if (isset($_GET['success'])) {
+    echo "Überweisung erfolgreich durchgeführt!";
+} elseif (isset($_GET['message'])) {
+    echo "Fehler: " . $_GET['message'];
+}*/
+
 if(isset($_SESSION['username'])){
 $currentUser = $_SESSION['username'];
 $sql = "SELECT Guthaben FROM users WHERE Name = '$currentUser'";
@@ -54,11 +60,11 @@ else{
 
         <div id="popupContainer"></div>
         <div class="inputs_container">
-
             <form class="form1" action="senden.php" id="login_form" method="POST">
                 <h1>Hallo: <?php echo $currentUser; ?></h1>
                 <h1>Ihr Guthaben: <?php echo $balance; ?></h1>
-                <br><br>
+                
+                <br>
                 <h2>Geld senden:</h2>
                 <div class="inputs_container">
                     <label for="recipient">Empfänger:</label>
@@ -70,10 +76,19 @@ else{
                     <label for="amount">Betrag:</label>
                     <input type="number" name="amount" id="amount" placeholder="0" step="1" min="0" pattern="[0-9]+" required>
                     <input type="submit" value="Senden">
+                 
                 </div>
+                <?php
+                if (isset($_GET['success'])) {
+                    echo "<p class='success'>Überweisung erfolgreich durchgeführt!</p>";
+                } elseif (isset($_GET['message'])) {
+                    echo "<p class='error1'>".$_GET['message'] . "</p>";
+                }
+                ?>
+            </form>
         </div>
     </div>
-    </form>
 </body>
+
 
 </html>
