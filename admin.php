@@ -8,7 +8,7 @@ require_once 'absoluttimeout.php';
     echo "Fehler: " . $_GET['message'];
 }*/
 
-if(isset($_SESSION['username'])){
+if($_SESSION['rolle'] == 'administrator'){
 $currentUser = $_SESSION['username'];
 $sql = "SELECT Guthaben FROM users WHERE Name = '$currentUser'";
 $result = $conn->query($sql);
