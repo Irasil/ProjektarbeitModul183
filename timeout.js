@@ -1,4 +1,4 @@
-var idleTimeout = 2000;  // 5 Minuten in Millisekunden
+var idleTimeout = 300000;  // 5 Minuten in Millisekunden
 var idleTimer;
 var logoutConfirmationTime = 5000; // 5 Sekunden in Millisekunden
 var isPopupDisplayed = false;
@@ -6,7 +6,6 @@ var shouldPerformLogout = true;
 var logoutConfirmationTimeout;
 
 resetIdleTimer();
-clearTimeout(logoutConfirmationTimeout);
 
 // Funktion zur Aktualisierung des Idle-Timers
 function resetIdleTimer() {
@@ -27,7 +26,6 @@ function showLogoutConfirmation() {
     if (isPopupDisplayed) {
         return;
     }
-    clearTimeout(logoutConfirmationTimeout);
     
     var popupContainer = document.getElementById('popupContainer');
 
@@ -56,8 +54,9 @@ function showLogoutConfirmation() {
         if (popupContainer.contains(popup)) {
             popupContainer.removeChild(popup);
             isPopupDisplayed = false;
+            clearTimeout(logoutConfirmationTimeout);
             shouldPerformLogout = true;
-            resetIdleTimer(); // Setze den Idle-Timer zurück
+            resetIdleTimer();
         }
     }
 
@@ -72,7 +71,7 @@ function showLogoutConfirmation() {
     }
     
     // Automatisches Schließen des Popups nach einer bestimmten Zeit
-    logoutConfirmationTimeout = setTimeout(logout, logoutConfirmationTime);
+    logoutConfirmationTimeout = setTimeout(handleNoClick, logoutConfirmationTime);
 }
 
 // Event-Listener für Interaktionen des Benutzers

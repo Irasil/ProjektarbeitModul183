@@ -102,7 +102,7 @@ $conn->close();
                 <th>Name</th>
                 <th></th>
                 <th>Guthaben</th>
-                <th></th>
+                <th style="text-align: left; padding-left:4%">Neues Guthaben</th>
             </tr>
         </thead>
         <tbody>

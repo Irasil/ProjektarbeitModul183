@@ -16,6 +16,7 @@ body{
     align-items:flex-start;
     flex-wrap:wrap;
     padding-top:100px;
+    overflow: hidden;
 }
 .form1{
     height: 575px;
@@ -98,6 +99,11 @@ h2{
     color: red;
     text-align: left;
     padding-left: 12%;
+}
+.error1
+{
+    color: red;
+    text-align: left;
 }
 
 .form2 {
@@ -247,6 +253,7 @@ ul {
     padding: 14px 16px;
     text-decoration: none;
     font-size: larger;
+    font-family: Tahoma, sans-serif;
     
   }
 

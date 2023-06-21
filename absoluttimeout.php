@@ -2,7 +2,7 @@
 session_start();
 
 // Setze das absolute Timeout (in Sekunden)
-$absoluteTimeout = 10; // Timeout von 30 Minuten 1800
+$absoluteTimeout = 1800; // Timeout von 30 Minuten 1800
 
 // Überprüfe, ob die Session bereits gestartet wurde
 if (isset($_SESSION['start_time'])) {

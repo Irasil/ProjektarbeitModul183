@@ -5,22 +5,18 @@ require_once 'log.php';
 $log = new Log('log.log');
 
 // Funktion zum Bereinigen der Benutzereingaben
-class DataAccess
-{
+class DataAccess{
     private $conn;
 
-    public function __construct($config)
-    {
+    public function __construct($config){
         $this->conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
 
-        // Überprüfen, ob die Verbindung erfolgreich hergestellt wurde
-        if ($this->conn->connect_error) {
-            die("Verbindung zur Datenbank fehlgeschlagen: " . $this->conn->connect_error);
+        if ($this->conn->connect_error){
+            header('Location: ups.php');
         }
     }
 
-    public function getUserByUsernameAndPassword($username, $password)
-    {
+    public function getUserByUsernameAndPassword($username, $password){
         $sql = "SELECT * FROM users WHERE Name = ? AND Passwort = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("ss", $username, $password);
@@ -32,8 +28,7 @@ class DataAccess
     }
 
     // Datenbankverbindung schließen
-    public function closeConnection()
-    {
+    public function closeConnection(){
         $this->conn->close();
     }
 }
@@ -50,6 +45,11 @@ if (isset($_SESSION['rolle'])) {
         header('Location: user.php');
         exit();
     }
+}
+
+// Generiere CSRF-Token und speichere es in der Sitzung
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
 // Überprüfen, ob das Formular abgeschickt wurde
@@ -128,11 +128,6 @@ function validatePassword($password)
     } else {
         return false;
     }
-}
-
-// Generiere CSRF-Token und speichere es in der Sitzung
-if (!isset($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 ?>
 

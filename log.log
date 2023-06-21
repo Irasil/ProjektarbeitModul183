@@ -46,33 +46,8 @@
 2023-06-16 23:21:09 - [INFO] - simon hat sich erfolgreich angemeldet!
 2023-06-16 23:23:09 - [WARNING] - Login als Simon fehlgeschlagen!
 2023-06-18 0:12:08 - [INFO] - Sender: simon, Empfänger: david, Betrag: 1
-2023-06-18 0:12:33 - [INFO] - Sender: simon, Empfänger: david, Betrag: 1
-2023-06-18 0:12:34 - [INFO] - Sender: simon, Empfänger: david, Betrag: 1
-2023-06-18 0:12:35 - [INFO] - Sender: simon, Empfänger: david, Betrag: 1
-2023-06-18 0:12:36 - [INFO] - Sender: simon, Empfänger: david, Betrag: 1
-2023-06-18 0:12:36 - [INFO] - Sender: simon, Empfänger: david, Betrag: 1
-2023-06-18 0:12:36 - [INFO] - Sender: simon, Empfänger: david, Betrag: 1
-2023-06-18 0:12:36 - [INFO] - Sender: simon, Empfänger: david, Betrag: 1
-2023-06-18 0:12:36 - [INFO] - Sender: simon, Empfänger: david, Betrag: 1
-2023-06-18 0:13:32 - [INFO] - Sender: simon, Empfänger: admin, Betrag: 1
-2023-06-18 0:13:33 - [INFO] - Sender: simon, Empfänger: admin, Betrag: 1
-2023-06-18 0:15:15 - [INFO] - Sender: simon, Empfänger: david, Betrag: 1
 2023-06-18 0:15:34 - [INFO] - Sender: simon, Empfänger: admin, Betrag: 1
 2023-06-18 14:45:45 - [CREATED] - BenutzerHalloerfolgreich erstellt.
-2023-06-18 15:12:46 - [ERROR] - Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte
-2023-06-18 15:13:52 - [ERROR] - Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte
-2023-06-18 15:14:50 - [ERROR] - Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte
-2023-06-18 15:15:06 - [WARNING] - Login als Simon fehlgeschlagen!
-2023-06-18 15:22:49 - [WARNING] - Login als Simon fehlgeschlagen!
-2023-06-18 15:22:50 - [WARNING] - Login als Simon fehlgeschlagen!
-2023-06-18 15:22:51 - [WARNING] - Login als Simon fehlgeschlagen!
-2023-06-18 15:22:53 - [WARNING] - Login als Simon fehlgeschlagen!
-2023-06-18 15:22:54 - [WARNING] - Login als Simon fehlgeschlagen!
-2023-06-18 15:22:59 - [WARNING] - Login als Simon fehlgeschlagen!
-2023-06-18 15:23:43 - [INFO] - simon hat sich erfolgreich angemeldet!
-2023-06-18 15:23:52 - [WARNING] - Login als Simon fehlgeschlagen!
-2023-06-18 15:26:19 - [WARNING] - Login als Simon fehlgeschlagen!
-2023-06-18 15:26:30 - [WARNING] - Login als Simon2 fehlgeschlagen!
 2023-06-18 15:29:15 - [FATAL] - Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte
 2023-06-18 20:55:30 - [INFO] - admin hat sich erfolgreich angemeldet!
 2023-06-18 20:55:43 - [INFO] - admin hat sich erfolgreich angemeldet!
@@ -317,7 +292,8 @@ sdadasd
 2023-06-18 22:53:11 - [WARNING] - Login als vega://invalid/;? fehlgeschlagen!
 2023-06-18 22:53:11 - [WARNING] - Login als //vega.invalid/;? fehlgeschlagen!
 2023-06-18 22:53:11 - [WARNING] - Login als http://vega.invalid/;? fehlgeschlagen!
-2023-06-18 22:53:11 - [WARNING] - Login als JoeybogusVega-Inject:bogus fehlgeschlagen!
+2023-06-18 22:53:11 - [WARNING] - Login als Joeybogus
+Vega-Inject:bogus fehlgeschlagen!
 2023-06-18 22:53:11 - [WARNING] - Login als Joeybogus
 Vega-Inject:bogus fehlgeschlagen!
 2023-06-18 22:53:11 - [WARNING] - Login als &quot; AND 1=2 -- fehlgeschlagen!

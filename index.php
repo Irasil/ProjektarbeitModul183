@@ -1,5 +1,10 @@
 <?php
 require_once 'absoluttimeout.php';
+if (isset($_SESSION['username'])) {
+    $popupContainer = '<div id="popupContainer"></div>'; // Erzeuge das Popup-Div
+} else {
+    $popupContainer = ''; // Setze das Popup-Div auf einen leeren String
+}
 ?>
 
 <html lang="de">
@@ -24,7 +29,7 @@ require_once 'absoluttimeout.php';
         <ul>
             <li class="active"><a class="a1" href="index.php">Home</a></li>
             <?php ;
-            if (!$_SESSION) : ?>
+            if (!isset($_SESSION['username'])) : ?>
                 <li style="float: right;"><a class="a1" href="login.php">Anmelden</a></li>
 
             <?php else : ?>
@@ -32,6 +37,8 @@ require_once 'absoluttimeout.php';
                 <?php
                 if (isset($_SESSION['rolle'])) {
                     if ($_SESSION['rolle'] == 'administrator') {
+                        echo '<li style="float: right;"><a class="a1" href="create.php">Benutzer erstellen</a></li>';
+                        echo '<li style="float: right;"><a class="a1" href="overview.php">Coins Managen</a></li>';
                         echo '<li style="float: right;"><a class="a1" href="admin.php">Meine Coins</a></li>';
                     } else {
                         echo '<li style="float: right;"><a class="a1" href="user.php">Meine Coins</a></li>';
@@ -44,9 +51,10 @@ require_once 'absoluttimeout.php';
     </div>
     
 
-    <div class="inputs_container"><div id="popupContainer"></div><h1>Willkommen bei Aarau Coin</h1></div>
+    <div class="inputs_container"><?php echo $popupContainer; ?><h1>Willkommen bei Aarau Coin</h1>
 
-    
+    <div class="inputs_container"><img src="coin.png" alt="Coin" width="600px" height="600px" style="margin-top: 100px ;"></div>
+</div>   
 
 </body>
 
