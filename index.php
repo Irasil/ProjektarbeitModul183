@@ -53,7 +53,7 @@ if (isset($_SESSION['username'])) {
 
     <div class="inputs_container"><?php echo $popupContainer; ?><h1>Willkommen bei Aarau Coin</h1>
 
-    <div class="inputs_container"><img src="coin.png" alt="Coin" width="600px" height="600px" style="margin-top: 100px ;"></div>
+    <div class="inputs_container"><img src="coin.png" alt="Coin" width="400px" height="400px" style="margin-top: 60px ;"></div>
 </div>   
 
 </body>
