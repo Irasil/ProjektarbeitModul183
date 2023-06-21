@@ -52,6 +52,11 @@ if (isset($_SESSION['rolle'])) {
     }
 }
 
+// Generiere CSRF-Token und speichere es in der Sitzung
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 // Überprüfen, ob das Formular abgeschickt wurde
 if (isset($_POST['submit'])) {
     // Überprüfen des CSRF-Tokens
@@ -130,10 +135,7 @@ function validatePassword($password)
     }
 }
 
-// Generiere CSRF-Token und speichere es in der Sitzung
-if (!isset($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-}
+
 ?>
 
 <html lang="de">

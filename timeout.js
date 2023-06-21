@@ -1,4 +1,4 @@
-var idleTimeout = 2000;  // 5 Minuten in Millisekunden
+var idleTimeout = 300000;  // 5 Minuten in Millisekunden
 var idleTimer;
 var logoutConfirmationTime = 5000; // 5 Sekunden in Millisekunden
 var isPopupDisplayed = false;
