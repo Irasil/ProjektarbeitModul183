@@ -54,9 +54,9 @@ function showLogoutConfirmation() {
         if (popupContainer.contains(popup)) {
             popupContainer.removeChild(popup);
             isPopupDisplayed = false;
-            clearTimeout(logoutConfirmationTimeout); // Timeout für Logout-Bestätigung löschen
+            clearTimeout(logoutConfirmationTimeout);
             shouldPerformLogout = true;
-            resetIdleTimer(); // Setze den Idle-Timer zurück
+            resetIdleTimer();
         }
     }
 
