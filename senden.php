@@ -2,7 +2,7 @@
 require_once 'config.php';
 require_once 'log.php';
 $log = new Log('log.log');
-//require_once  'absoluttimeout.php';
+require_once  'absoluttimeout.php';
 
 // Überprüfen, ob das Formular abgeschickt wurde
 if(isset($_SESSION['username'])){

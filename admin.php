@@ -2,7 +2,7 @@
 require_once 'config.php';
 require_once 'absoluttimeout.php';
 
-if(isset($_SESSION)){
+if(isset($_SESSION['username'])){
 $currentUser = $_SESSION['username'];
 $sql = "SELECT Guthaben FROM users WHERE Name = '$currentUser'";
 $result = $conn->query($sql);

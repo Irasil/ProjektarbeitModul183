@@ -6,7 +6,6 @@ var shouldPerformLogout = true;
 var logoutConfirmationTimeout;
 
 resetIdleTimer();
-clearTimeout(logoutConfirmationTimeout);
 
 // Funktion zur Aktualisierung des Idle-Timers
 function resetIdleTimer() {
@@ -27,7 +26,6 @@ function showLogoutConfirmation() {
     if (isPopupDisplayed) {
         return;
     }
-    clearTimeout(logoutConfirmationTimeout);
     
     var popupContainer = document.getElementById('popupContainer');
 
@@ -56,6 +54,7 @@ function showLogoutConfirmation() {
         if (popupContainer.contains(popup)) {
             popupContainer.removeChild(popup);
             isPopupDisplayed = false;
+            clearTimeout(logoutConfirmationTimeout); // Timeout für Logout-Bestätigung löschen
             shouldPerformLogout = true;
             resetIdleTimer(); // Setze den Idle-Timer zurück
         }
@@ -72,7 +71,7 @@ function showLogoutConfirmation() {
     }
     
     // Automatisches Schließen des Popups nach einer bestimmten Zeit
-    logoutConfirmationTimeout = setTimeout(logout, logoutConfirmationTime);
+    logoutConfirmationTimeout = setTimeout(handleNoClick, logoutConfirmationTime);
 }
 
 // Event-Listener für Interaktionen des Benutzers

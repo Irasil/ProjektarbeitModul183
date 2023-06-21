@@ -3,7 +3,7 @@ require_once 'config.php';
 require_once  'absoluttimeout.php';
 
 
-if(isset($_SESSION)){
+if(isset($_SESSION['username'])){
 // Guthaben des aktuellen Benutzers aus der Datenbank abrufen
 $currentUser = $_SESSION['username'];
 $sql = "SELECT Guthaben FROM users WHERE Name = '$currentUser'";
