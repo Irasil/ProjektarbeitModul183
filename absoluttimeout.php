@@ -11,7 +11,9 @@ if (isset($_SESSION['start_time'])) {
 
     // Überprüfe das absolute Timeout
     if ($elapsedTime > $absoluteTimeout) {
-        
+        session_start();
+        session_unset();
+        session_destroy();
         header('Location: logout.php');
     }
     
