@@ -26,12 +26,12 @@ if (isset($_POST['submit'])) {
             $usernameError = "Der Benutzername existiert bereits. Bitte wählen Sie einen anderen Benutzernamen.";
         } else {
             // Das Passwort hashen, bevor es in die Datenbank gespeichert wird
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            //$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
             // SQL-Befehl zum Einfügen der Benutzerdaten in die Datenbank
             $sqlInsertUser = "INSERT INTO users (Name, Email, Passwort, Guthaben, Rolle) VALUES (?, ?, ?, ?, ?)";
             $stmtInsertUser = $conn->prepare($sqlInsertUser);
-            $stmtInsertUser->bind_param("sssis", $username, $email, $hashedPassword, $amount, $role);
+            $stmtInsertUser->bind_param("sssis", $username, $email, $password, $amount, $role);
 
             // Datenbankabfrage ausführen
             if ($stmtInsertUser->execute()) {
@@ -90,7 +90,7 @@ $conn->close();
             <input type="password" pattern="[a-zA-Z0-9äüöéèàêç]{3,}" placeholder="Passwort" name="password" autocomplete="off">
             <input type="number" name="amount" id="amount" placeholder="Guthaben" min="0" pattern="[0-9]+" required>
             <select name="role" id="role" style="height: 64px; width: 240px; margin: 15px; padding: 0px 25px; border-radius: 10px; border: none; background-color: #373e49; box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.212); color: white; font-size: 20px; transition: 0.2s;">
-                <option value="admin">Admin</option>
+                <option value="administrator">Admin</option>
                 <option value="user">User</option>
             </select>
 
