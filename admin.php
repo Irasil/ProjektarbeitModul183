@@ -2,12 +2,6 @@
 require_once 'config.php';
 require_once 'absoluttimeout.php';
 
-/*if (isset($_GET['success'])) {
-    echo "Überweisung erfolgreich durchgeführt!";
-} elseif (isset($_GET['message'])) {
-    echo "Fehler: " . $_GET['message'];
-}*/
-
 if($_SESSION['rolle'] == 'administrator'){
 $currentUser = $_SESSION['username'];
 $sql = "SELECT Guthaben FROM users WHERE Name = '$currentUser'";
